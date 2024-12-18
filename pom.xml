@@ -1,14 +1,58 @@
 <project>
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>mygroupid</groupId>
-  <artifactId>myartifactid</artifactId>
-  <version>0.0-SNAPSHOT</version>
+<modelVersion>4.0.0</modelVersion>
+<groupId>mygroupid</groupId>
+<artifactId>myartifactid</artifactId>
+<version>0.0-SNAPSHOT</version>
+<properties>
+<!-- Establece el nivel de Java en 8 -->
+<maven.compiler.source>1.8</maven.compiler.source>
+<maven.compiler.target>1.8</maven.compiler.target>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+</properties>
+
   <dependencies>
+<!-- Dependencia de JUnit Jupiter para las pruebas -->
+<dependency>
+<groupId>org.junit.jupiter</groupId>
+<artifactId>junit-jupiter-api</artifactId>
+<version>5.9.3</version>
+<scope>test</scope>
+</dependency>
+
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <type>jar</type>
-    </dependency>
-  </dependencies>
+<groupId>org.junit.jupiter</groupId>
+<artifactId>junit-jupiter-engine</artifactId>
+<version>5.9.3</version>
+<scope>test</scope>
+</dependency>
+</dependencies>
+
+
+  <build>
+<plugins>
+<!-- Maven Compiler Plugin para compilar el código -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<version>3.11.0</version> <!-- Usar la versión más reciente -->
+<configuration>
+<source>1.8</source> <!-- Versión de Java para el código fuente -->
+<target>1.8</target> <!-- Versión de Java para el bytecode generado -->
+<encoding>UTF-8</encoding> <!-- Codificación de caracteres -->
+</configuration>
+</plugin>
+
+
+<!-- Maven Surefire Plugin para ejecutar las pruebas -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<version>3.0.0</version>
+<configuration>
+<useModulePath>false</useModulePath> <!-- Desactivar uso de module-path si usas Java 9+ -->
+</configuration>
+</plugin>
+</plugins>
+</build>
 </project>
